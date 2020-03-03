@@ -93,7 +93,8 @@ def main(args):
 	for edge in G.edges():
 		G[edge[0]][edge[1]]['weight'] = 1
 
-	G = G.to_undirected()
+	if not args.directed:
+		G = G.to_undirected()
 
 	G = node2vec.Graph(G, args.directed, args.p, args.q)
 
